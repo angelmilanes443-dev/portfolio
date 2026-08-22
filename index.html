@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff8fc">
+  <meta name="description" content="Angel Freah Milanes — student portfolio">
+  <title>Angel Freah Milanes | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fffafd;
+      --surface: rgba(255,255,255,.78);
+      --surface-solid: #ffffff;
+      --text: #29232f;
+      --muted: #716978;
+      --line: #eee6ef;
+      --pink: #e97aa9;
+      --pink-dark: #c85c8e;
+      --lavender: #9b8be8;
+      --mint: #78cdb6;
+      --dark: #302938;
+      --shadow: 0 18px 55px rgba(73, 49, 77, .10);
+      --shadow-soft: 0 8px 28px rgba(73, 49, 77, .07);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --container: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      min-height: 100vh;
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 5% 5%, rgba(255, 207, 228, .55), transparent 27rem),
+        radial-gradient(circle at 95% 18%, rgba(218, 213, 255, .65), transparent 30rem),
+        radial-gradient(circle at 50% 100%, rgba(211, 247, 236, .55), transparent 28rem),
+        var(--bg);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    section { width: 100%; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin-inline: auto; }
+
+    /* NAVIGATION */
+    .site-header {
+      position: fixed;
+      z-index: 1000;
+      top: 14px;
+      left: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      width: min(var(--container), calc(100% - 28px));
+      margin: auto;
+      padding: 10px 12px 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 999px;
+      box-shadow: 0 12px 40px rgba(57, 39, 61, .10);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      pointer-events: auto;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--pink), var(--lavender));
+      box-shadow: 0 8px 18px rgba(233,122,169,.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 600;
+      border-radius: 999px;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+      background: #f8eff6;
+    }
+
+    .nav-cta {
+      color: white !important;
+      background: var(--dark) !important;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      color: var(--dark);
+      background: #f7eef7;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 140px 0 80px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+      align-items: center;
+      gap: clamp(40px, 7vw, 100px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      margin-bottom: 22px;
+      color: var(--pink-dark);
+      background: rgba(255,255,255,.75);
+      border: 1px solid #f2dce8;
+      border-radius: 999px;
+      font-size: .84rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      line-height: .96;
+      letter-spacing: -.055em;
+      font-weight: 600;
+    }
+
+    .hero h1 span {
+      color: var(--pink-dark);
+      font-style: italic;
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      margin: 26px 0 14px;
+      color: var(--text);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 600;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0 19px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary {
+      color: white;
+      background: var(--dark);
+      box-shadow: 0 10px 25px rgba(48,41,56,.16);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,.7);
+      border-color: var(--line);
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: min(430px, 85vw);
+      aspect-ratio: 1;
+      margin-inline: auto;
+    }
+
+    .photo-wrap::before,
+    .photo-wrap::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .photo-wrap::before {
+      width: 74%;
+      height: 74%;
+      left: 4%;
+      top: 8%;
+      background: #f6c9df;
+      filter: blur(1px);
+    }
+
+    .photo-wrap::after {
+      width: 30%;
+      height: 30%;
+      right: 2%;
+      bottom: 6%;
+      background: #cfc9fa;
+    }
+
+    .photo-card {
+      position: absolute;
+      inset: 8%;
+      overflow: hidden;
+      border: 10px solid rgba(255,255,255,.92);
+      border-radius: 42% 58% 55% 45% / 48% 43% 57% 52%;
+      background: #f6edf5;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+      z-index: 2;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .floating-tag {
+      position: absolute;
+      z-index: 4;
+      right: -1%;
+      top: 18%;
+      padding: 11px 15px;
+      color: var(--text);
+      background: rgba(255,255,255,.9);
+      border: 1px solid white;
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: .82rem;
+      font-weight: 700;
+      transform: rotate(5deg);
+    }
+
+    .floating-tag.bottom {
+      left: 0;
+      right: auto;
+      top: auto;
+      bottom: 12%;
+      transform: rotate(-5deg);
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 105px 0;
+    }
+
+    .section-head {
+      max-width: 700px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      color: var(--pink-dark);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin-top: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+    }
+
+    .section-intro {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .about-card,
+    .mini-card,
+    .skill-card,
+    .experience-card,
+    .achievement-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid rgba(235,225,237,.95);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .about-card {
+      padding: clamp(24px, 4vw, 42px);
+      border-radius: var(--radius-lg);
+    }
+
+    .about-card p + p { margin-top: 18px; }
+    .highlight { color: var(--pink-dark); font-weight: 700; }
+
+    .mini-stack {
+      display: grid;
+      gap: 24px;
+    }
+
+    .mini-card {
+      padding: 25px;
+      border-radius: var(--radius-md);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .mini-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      min-height: 205px;
+      padding: 26px;
+      border-radius: var(--radius-md);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .skill-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      font-size: 1.25rem;
+    }
+
+    .pink { background: #fde5ef; }
+    .lavender { background: #ece9ff; }
+    .mint { background: #e1f7f0; }
+
+    .skill-card h3 { margin-bottom: 7px; font-size: 1.1rem; }
+    .skill-card p { color: var(--muted); font-size: .91rem; }
+
+    /* EXPERIENCE */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .experience-card {
+      padding: clamp(24px, 4vw, 36px);
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(233,122,169,.09);
+      right: -55px;
+      top: -55px;
+    }
+
+    .experience-label {
+      display: inline-block;
+      margin-bottom: 15px;
+      color: var(--pink-dark);
+      font-size: .8rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .experience-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
+    .school { color: var(--muted); font-weight: 600; margin-bottom: 18px; }
+    .experience-card p { color: var(--muted); }
+    .learned {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .learned span {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: var(--text);
+      font-size: .93rem;
+      font-weight: 600;
+    }
+
+    /* ACHIEVEMENT */
+    .achievement-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 24px;
+      padding: clamp(24px, 5vw, 45px);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.88), rgba(252,244,249,.8));
+    }
+
+    .trophy {
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      border-radius: 24px;
+      background: #fff0b8;
+      font-size: 2rem;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.9);
+    }
+
+    .achievement-card h3 { font-size: 1.5rem; margin-bottom: 6px; }
+    .achievement-card p { color: var(--muted); margin: 0; }
+
+    /* CONTACT */
+    .contact-section {
+      padding-bottom: 120px;
+    }
+
+    .contact-card {
+      padding: clamp(26px, 5vw, 50px);
+      border-radius: var(--radius-lg);
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 45px;
+      background: var(--dark);
+      color: white;
+      border: 0;
+      box-shadow: 0 22px 65px rgba(48,41,56,.18);
+    }
+
+    .contact-card .section-kicker { color: #f5a9c9; }
+    .contact-card h2 { margin-top: 8px; }
+    .contact-copy { color: #c9c1ce; max-width: 550px; margin-top: 13px; }
+
+    .contact-list {
+      display: grid;
+      gap: 13px;
+      align-content: center;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 17px;
+      color: white;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      transition: .25s ease;
+    }
+
+    .contact-item:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,.1);
+    }
+    .contact-item small { display: block; color: #aaa1b1; }
+    .contact-item strong { font-size: .92rem; }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 0 35px;
+      color: var(--muted);
+      text-align: center;
+      font-size: .86rem;
+    }
+    footer span { color: var(--pink); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .contact-card { grid-template-columns: 1fr; }
+      .hero-grid { text-align: center; }
+      .hero-copy, .hero-lead { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .photo-wrap { margin-top: 10px; width: min(390px, 78vw); }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .about-grid { gap: 18px; }
+      .contact-card { gap: 28px; }
+    }
+
+    @media (max-width: 700px) {
+      .site-header { top: 8px; }
+      .nav-shell { border-radius: 22px; padding: 9px 10px 9px 16px; }
+      .menu-btn { display: grid; place-items: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(255,255,255,.96);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 14px; }
+      .nav-cta { text-align: center; }
+      .hero { padding-top: 125px; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+      .hero-actions .btn { flex: 1 1 170px; }
+      .section { padding: 78px 0; }
+      .skills-grid,
+      .experience-grid { grid-template-columns: 1fr; }
+      .achievement-card { grid-template-columns: 1fr; text-align: center; }
+      .trophy { margin-inline: auto; }
+    }
+
+    @media (max-width: 480px) {
+      .container { width: min(var(--container), calc(100% - 28px)); }
+      .logo-text { display: none; }
+      .hero { padding-bottom: 60px; }
+      .photo-wrap { width: min(330px, 86vw); }
+      .floating-tag { font-size: .72rem; padding: 9px 11px; }
+      .about-card, .mini-card, .skill-card, .experience-card { padding: 22px; }
+      .contact-item { align-items: flex-start; }
+      .contact-item a { overflow-wrap: anywhere; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(233,122,169,.45);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="logo" href="#home" aria-label="Angel home">
+        <span class="logo-mark">♡</span>
+        <span class="logo-text">Angel Freah</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        ☰
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">✿ Welcome to my portfolio</span>
+          <h1>Hello, I'm <span>Angel Freah.</span></h1>
+          <p class="hero-lead">A curious student with a creative mind and a heart for learning.</p>
+          <p class="hero-copy">
+            I am a Senior High School student from Gonzaga National High School who enjoys
+            discovering new things, developing useful skills, and connecting with people.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#about">Get to know me →</a>
+            <a class="btn btn-secondary" href="https://www.canva.com/design/DAHRnjk_-5Y/taxOk_KHFq1P40oafl6M4g/edit?utm_content=DAHRnjk_-5Y&UTM_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Resume</a>
+          </div>
+          <p class="hero-note">Student portfolio · Learning · Leadership · Growth</p>
+        </div>
+
+        <div class="photo-wrap" aria-label="Profile photo">
+          <div class="floating-tag">✦ Always learning</div>
+          <div class="floating-tag bottom">♡ Keep growing</div>
+          <div class="photo-card">
+            <img src="formal.png" alt="Portrait of Angel Freah Milanes">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Get to know me</div>
+          <h2>About me</h2>
+          <p class="section-intro">A little introduction about who I am, what I value, and what I am learning.</p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <p>
+              Hi! My name is <span class="highlight">Angel Freah Milanes</span>.
+              I am a Senior High School student studying at
+              <span class="highlight">Gonzaga National High School</span>.
+            </p>
+            <p>
+              I am a dedicated student who <span class="highlight">loves learning new things</span>.
+              I try to improve myself by learning from experiences, developing my skills,
+              and working together with other people.
+            </p>
+            <p>
+              I believe communication, time management, and social skills are important
+              because they help me become a better student and a better person.
+            </p>
+          </article>
+
+          <div class="mini-stack">
+            <article class="mini-card">
+              <strong>🎓 Student</strong>
+              <p>Currently focused on learning, school activities, and building skills for the future.</p>
+            </article>
+            <article class="mini-card">
+              <strong>💡 Curious learner</strong>
+              <p>Interested in discovering new ideas, improving abilities, and gaining practical experience.</p>
+            </article>
+            <article class="mini-card">
+              <strong>🤝 Team player</strong>
+              <p>Enjoys communicating, collaborating, and learning from different people and experiences.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">What I can do</div>
+          <h2>My skills</h2>
+          <p class="section-intro">Skills I have developed through school, training, teamwork, and everyday learning.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon pink">💻</div>
+            <h3>Computer Skills</h3>
+            <p>Basic computer operations, file maintenance, account safety, system management, and efficient computer use.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon lavender">💬</div>
+            <h3>Communication</h3>
+            <p>Developing confidence in sharing ideas, expressing thoughts clearly, and working with others.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon mint">⏱️</div>
+            <h3>Time Management</h3>
+            <p>Organizing responsibilities, managing school tasks, and making good use of available time.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon pink">🤝</div>
+            <h3>Socializing</h3>
+            <p>Comfortable meeting new people, working with classmates, and learning from different experiences.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon lavender">🧩</div>
+            <h3>Problem Solving</h3>
+            <p>Understanding challenges and developing practical ways to work through them.</p>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon mint">🌱</div>
+            <h3>Continuous Learning</h3>
+            <p>Always curious and willing to learn new knowledge while improving existing skills.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Learning beyond the classroom</div>
+          <h2>Experience & learning</h2>
+          <p class="section-intro">Experiences that helped me build practical skills and confidence.</p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="experience-card">
+            <span class="experience-label">Training</span>
+            <h3>Auxiliary Technology Program</h3>
+            <p class="school">Lyceum of the Philippines University – Aparri</p>
+            <p>
+              I joined the Auxiliary Technology Program (ATP) training at Lyceum Aparri.
+              The experience helped me gain practical knowledge about computers and technology.
+            </p>
+            <div class="learned">
+              <span>🔐 Safe and secure accounts</span>
+              <span>📁 File management</span>
+              <span>⚙️ System management</span>
+              <span>🧮 Easy and efficient computation</span>
+              <span>💬 Communication and social skills</span>
+            </div>
+          </article>
+
+          <article class="experience-card">
+            <span class="experience-label">School experience</span>
+            <h3>Gonzaga National High School</h3>
+            <p class="school">Grade 11 McClintock student</p>
+            <p>
+              I have been given opportunities to take leadership roles in school paper
+              activities and group schoolwork. These experiences helped me strengthen
+              communication, time management, and social skills.
+            </p>
+            <div class="learned">
+              <span>💻 Time management</span>
+              <span>🔐 Learning new things</span>
+              <span>💬 Communication and social skills</span>
+              <span>⭐ Leadership and teamwork</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">A little achievement</div>
+          <h2>My academic journey</h2>
+        </div>
+
+        <article class="achievement-card">
+          <div class="trophy">🏆</div>
+          <div>
+            <h3>Consistent Honor Student</h3>
+            <p>
+              I have been a consistent honor student since elementary. This achievement
+              represents my dedication and commitment to doing my best in my studies.
+              It also reminds me that effort, consistency, and the willingness to learn matter.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <div class="section-kicker">Let's connect</div>
+            <h2>Contact me</h2>
+            <p class="contact-copy">
+              Thank you for visiting my portfolio. If you would like to connect with me,
+              you can use the contact details below.
+            </p>
+          </div>
+
+          <div class="contact-list">
+            <a class="contact-item" href="tel:09603223697">
+              <span class="contact-icon">📱</span>
+              <span>
+                <small>Phone number</small>
+                <strong>09603223697</strong>
+              </span>
+            </a>
+
+            <a class="contact-item" href="mailto:angelmilanes443@gmail.com">
+              <span class="contact-icon">✉️</span>
+              <span>
+                <small>Email address</small>
+                <strong>angelmilanes443@gmail.com</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Designed with <span>♡</span> by Angel Freah Milanes</p>
+      <p>© 2026 Angel Freah Milanes · Student Portfolio</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open);
+      menuBtn.textContent = open ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.textContent = "☰";
+      });
+    });
+  </script>
+</body>
+</html>
